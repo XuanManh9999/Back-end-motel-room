@@ -22,7 +22,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       target: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       bonus: {
         type: Sequelize.STRING,
