@@ -2,10 +2,10 @@ import db from "../models"; // lay db
 import bycrypt from "bcryptjs"; // ma hoa password
 import jwt from "jsonwebtoken"; // tao token
 import { v4 } from "uuid"; // tao id
-import chothuecanho from "../../data/chothuecanho.json";
-import chothuephongtro from "../../data/chothuephongtro.json";
-import nhachothue from "../../data/nhachothue.json";
-import matbangvanphong from "../../data/matbangvanphong.json";
+import chothuecanho from "../data/chothuecanho.json";
+import chothuephongtro from "../data/chothuephongtro.json";
+import nhachothue from "../data/nhachothue.json";
+import matbangvanphong from "../data/matbangvanphong.json";
 import gennerateCode from "../utils/rendercode";
 
 const dataBody = matbangvanphong.body;
@@ -18,7 +18,7 @@ export const insertServices = () =>
     try {
       dataBody.forEach(async (item) => {
         let postId = v4();
-        let labelCode = gennerateCode(4);
+        let labelCode = gennerateCode(item?.headerDetail?.class?.classType);
         let attributesId = v4();
         let userId = v4();
         let overviewId = v4();
@@ -47,9 +47,14 @@ export const insertServices = () =>
           id: imagesId,
           image: JSON.stringify(item?.images),
         });
-        await db.Label.create({
-          code: labelCode,
-          value: item?.headerDetail?.class?.classType,
+        await db.Label.findOrCreate({
+          where: {
+            code: labelCode,
+          },
+          defaults: {
+            code: labelCode,
+            name: item?.headerDetail?.class?.classType,
+          },
         });
         await db.Overview.create({
           id: overviewId,
