@@ -8,7 +8,7 @@ import nhachothue from "../data/nhachothue.json";
 import matbangvanphong from "../data/matbangvanphong.json";
 import gennerateCode from "../utils/rendercode";
 
-const dataBody = matbangvanphong.body;
+const dataBody = chothuecanho.body;
 
 const hashPassword = (password) =>
   bycrypt.hashSync(password, bycrypt.genSaltSync(10));

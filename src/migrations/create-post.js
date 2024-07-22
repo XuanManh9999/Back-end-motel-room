@@ -19,7 +19,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       address: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       attributesId: {
         type: Sequelize.STRING,
@@ -28,7 +28,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       description: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       userId: {
         type: Sequelize.STRING,

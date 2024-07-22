@@ -26,6 +26,7 @@ const getPostsService = () =>
           "id",
           "title",
           "star",
+          "description",
           "labelCode",
           "address",
           "categoryCode",
